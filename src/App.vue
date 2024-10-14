@@ -5,10 +5,13 @@ import Modal from './components/komponen/Modal.vue';
 </script>
 
 <template>
-  <Modal :header="header" :text="text" theme="astral"/>
   <div class="container">
     <h1>{{ title }}</h1>
   </div>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="astral" @close="openModal"/>
+  </div>
+  <button @click="openModal">Open Modal</button>
 </template>
 
 <script>
@@ -19,6 +22,12 @@ import Modal from './components/komponen/Modal.vue';
         title: 'Hello world Vue, ^^',
         header: 'Honkai Star Rail',
         text: 'Ambil tiket mu dan pergi menuju ke dunia luar',
+        showModal: false,
+      }
+    },
+    methods: {
+      openModal() {
+        this.showModal = !this.showModal
       }
     },
   }
@@ -32,7 +41,7 @@ import Modal from './components/komponen/Modal.vue';
   .container h1 {
     color: black;
     font-weight: lighter;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 6px solid black;
     display: inline-block;
     padding: 10px;
   }

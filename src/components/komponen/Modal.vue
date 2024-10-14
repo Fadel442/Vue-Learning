@@ -3,13 +3,19 @@
         <div class="backdrop" :class="{express: theme === 'astral'}">
             <h1>{{header}}</h1>
             <p>{{text}}</p>
+            <button @click="closeModal">Close Modal</button>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['header', 'text', 'theme']
+        props: ['header', 'text', 'theme'],
+        methods: {
+            closeModal() {
+                this.$emit('close')
+            }
+        },
     }
 </script>
 
