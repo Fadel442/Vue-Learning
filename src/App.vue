@@ -9,7 +9,14 @@ import Modal from './components/komponen/Modal.vue';
     <h1>{{ title }}</h1>
   </div>
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="astral" @close="openModal"/>
+    <Modal theme="astral" @close="openModal">
+      <template v-slot:links>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
+      </template>
+      <h1>Zenless Zone Zero</h1>
+      <p>All proxy serve to the New Eridu!</p>
+    </Modal>
   </div>
   <button @click="openModal">Open Modal</button>
 </template>
@@ -45,6 +52,17 @@ import Modal from './components/komponen/Modal.vue';
     display: inline-block;
     padding: 10px;
   }
+  a {
+    color: white;
+    padding: 9px;
+    border: 1px solid white;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 10px;
+  }
+</style>
+
+<style scoped>
 </style>
 
 

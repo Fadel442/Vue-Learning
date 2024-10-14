@@ -1,8 +1,10 @@
 <template>
     <div class="modal">
         <div class="backdrop" :class="{express: theme === 'astral'}">
-            <h1>{{header}}</h1>
-            <p>{{text}}</p>
+            <slot>default content</slot>
+            <div class="actions">
+                <slot name="links"></slot>
+            </div>
             <button @click="closeModal">Close Modal</button>
         </div>
     </div>
@@ -10,7 +12,7 @@
 
 <script>
     export default {
-        props: ['header', 'text', 'theme'],
+        props: ['theme'],
         methods: {
             closeModal() {
                 this.$emit('close')
@@ -41,10 +43,18 @@
     .backdrop h1 {
         color: white;
     }
+    .backdrop .actions {
+        text-align: center;
+        margin: 30px;
+    }
+    .backdrop.express .actions {
+        text-align: center;
+        margin: 30px;
+    }
     .backdrop.express {
         background-color: crimson;
         color: white;
-        font-style: italic;
+        /* font-style: italic; */
     }
     .backdrop.backdrop.express h1 {
         border-bottom: 1px solid #ddd;
