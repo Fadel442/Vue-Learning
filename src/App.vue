@@ -18,7 +18,24 @@ import Modal from './components/komponen/Modal.vue';
       <p>All proxy serve to the New Eridu!</p>
     </Modal>
   </div>
-  <button @click="openModal">Open Modal</button>
+  <div v-if="showModalTwo">
+    <Modal @close="openModalTwo">
+      <template v-slot="contactUs">
+        <h1>Honkai Star Rail</h1>
+        <p style="padding: 10px; border-bottom: 1px solid white;">Ambil tiket mu dan pergi menuju ke dunia luar</p>
+        <h3>Contact Us</h3>
+        <div class="modalBtnGrup">
+          <a href="#">Pom Pom</a>
+          <a href="#">Himeko</a>
+        </div>
+        <div style="border-bottom: dashed; margin: 30px;"></div>
+      </template>
+    </Modal>
+  </div>
+  <div class="btnGrup">
+    <button @click="openModal">Open Modal 1</button>
+    <button @click="openModalTwo">Open Modal 2</button>
+  </div>
 </template>
 
 <script>
@@ -30,11 +47,15 @@ import Modal from './components/komponen/Modal.vue';
         header: 'Honkai Star Rail',
         text: 'Ambil tiket mu dan pergi menuju ke dunia luar',
         showModal: false,
+        showModalTwo: false,
       }
     },
     methods: {
       openModal() {
         this.showModal = !this.showModal
+      },
+      openModalTwo() {
+        this.showModalTwo = !this.showModalTwo
       }
     },
   }
